@@ -3,7 +3,7 @@ const router = express.Router();
 
 const Model = require('../models/models');
 
-router.get('/', async (req,res) => {
+router.get('/allTask', async (req,res) => {
     try{
         const data = await Model.find();
         res.json(data)
@@ -13,7 +13,7 @@ router.get('/', async (req,res) => {
     }
 });
 
-router.post('/postNewTask', async (req,res) => {
+router.post('/newTask', async (req,res) => {
     let lastUpdated = new Date();
     const data = new Model({
         taskTitle: req.body.title,
@@ -32,7 +32,7 @@ router.post('/postNewTask', async (req,res) => {
     }
 })
 
-router.patch('/update/:id', async (req,res) => {
+router.patch('/updateTask/:id', async (req,res) => {
     try{
         const id = req.params.id;
         req.body.lastUpdated = new Date();
@@ -45,7 +45,7 @@ router.patch('/update/:id', async (req,res) => {
     }
     catch(error){
         res.status(400).json({message: error.message})
-    }
+    } 
 })
 
 

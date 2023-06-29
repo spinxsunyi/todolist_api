@@ -9,10 +9,13 @@ const dataSchema = new mongoose.Schema({
     },
     taskDone:{
         type: Boolean,
+        default: false
     },
     lastUpdated:{
-
+        type: Date,
+        default: Date.now
     }
+
 });
 
 module.exports = mongoose.model('tasks',dataSchema)
