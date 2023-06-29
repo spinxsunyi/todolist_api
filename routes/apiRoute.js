@@ -48,5 +48,14 @@ router.patch('/updateTask/:id', async (req,res) => {
     } 
 })
 
-
+router.get('/deleteTask/:id', async(req,res) =>{
+    try{
+        const id = req.params.id;
+        const result = await Model.findByIdAndRemove(id);
+        res.send(result);
+    }
+    catch (error){
+        res.status(400).json({message: error.message})
+    }
+})
 module.exports = router;

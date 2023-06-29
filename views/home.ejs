@@ -1,21 +1,38 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title><%=title%></title>
+    <title>
+        <%=title%>
+    </title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <script src='main.js'></script>
 </head>
+
 <body>
     <bold>TO DO LIST</bold>
+    <table>
+        <% data.forEach(function(i, index){%>
+            <tr>
+                <td><%= index+1 %></td>
+                <td><%= i.taskTitle %></td>
+                <td><%= i.taskDone %></td>
+                <td><%= i.lastUpdated%></td>
+            </tr>
+        <%});%>
+    </table>
+
+
     <ul>
         <% data.forEach(function(x){ %>
             <li>
                 <%= x.taskTitle %> <a href="task/<%=x.id%>">edit</a> <a href="#">delete</a>
             </li>
-        <%});%>
+            <%});%>
     </ul>
 </body>
+
 </html>
